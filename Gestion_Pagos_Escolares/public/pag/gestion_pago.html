@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header class="main-header">
+        <button class="menu-toggle-btn" onclick="toggleSideMenu()">&#9776; Menú</button>
+        <h1>PAGOS Y FACTURACIÓN</h1>
+        <div class="user-info">
+            <span id="username-display"></span>
+        </div>
+    </header>
+
+    <nav id="side-menu">
+        <a href="/dashboard"><i class="fas fa-house"></i> Inicio</a>
+        <a href="/representantes"><i class="fas fa-person-dress"></i><i class="fas fa-person"></i> Representantes y Alumnos</a>
+        <a href="/reportes"><i class="fas fa-file-lines"></i> Reportes</a>
+        <a href="/configuracion"><i class="fas fa-gears"></i> Configuración</a>
+        <a href="#" onclick="logout()"><i class="fas fa-power-off"></i> Cerrar Sesión</a>
+    </nav>
+    
+    <main class="main-content">
+        <div class="gestion-container">
+            <div class="gestion-column gestion-buttons-vertical">
+                <h1>MENÚ DE OPCIONES</h1>
+                <button class="btn" onclick="abrirModalPagos('consultar')">
+                    <h2><i class="fas fa-eye"></i> Consultar</h2>
+                    <p>Revisar el Estado de Cuenta y Saldo de un Representante.</p>
+                </button>
+                <button class="btn" onclick="abrirModalPagos('facturacion')">
+                    <h2><i class="fas fa-cash-register"></i> Facturación</h2>
+                    <p>Realizar Facturación e Impresión de Comprobante.</p>
+                </button>
+                <button class="btn" onclick="abrirModalPagos('abonar')">
+                    <h2><i class="fas fa-wallet"></i> Abonar Pago</h2>
+                    <p>Ingresar Saldo al Estado de Cuenta del Representante.</p>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <div id="pago-modal-busqueda" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal('pago-modal-busqueda')">&times;</span>
+            <h2 id="pago-modal-busqueda-title"></h2>
+            <div id="pago-modal-busqueda-body" class="modal-body">
+                <p>Ingrese la cédula del representante para continuar.</p>
+                <div class="modal-search-bar">
+                    <input type="text" id="pago-cedula-buscar" placeholder="Buscar por Cédula..." oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                    <button class="btn btn-small" id="pago-buscar-btn">Buscar</button>
+                </div>
+                <div id="pago-resultado-busqueda" class="list-container" style="margin-top: 15px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="pago-modal-consulta" class="modal modal-secundario">
+        <div class="modal-content modal-xlarge">
+            <span class="close" onclick="cerrarModal('pago-modal-consulta')">&times;</span>
+            <h2 id="pago-modal-consulta-title"></h2>
+            <div id="pago-modal-consulta-body" class="modal-body">
+                </div>
+            <div id="pago-modal-consulta-footer" class="modal-footer" style="justify-content: center; gap: 20px;">
+                </div>
+        </div>
+    </div>
+
+    <div id="pago-modal-abono" class="modal modal-terciario">
+        <div class="modal-content modal-xlarge">
+            <span class="close" onclick="cerrarModal('pago-modal-abono')">&times;</span>
+            <h2>Abonar Saldo a la Cuenta</h2>
+            <div id="pago-modal-abono-body" class="modal-body">
+                </div>
+        </div>
+    </div>
+
+    <script src="/src/menu.js"></script>
+    <script src="/src/authSesion.js"></script>
+    <script src="/src/pagos.js"></script>
+</body>
+</html>
