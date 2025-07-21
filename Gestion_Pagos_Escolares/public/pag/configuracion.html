@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="main-header">
+        <button class="menu-toggle-btn" onclick="toggleSideMenu()">&#9776; Menú</button>
+        <h1>CONFIGURACIÓN</h1>
+        <div class="user-info">
+            <span id="username-display"></span>
+        </div>
+    </header>
+
+    <nav id="side-menu">
+        <a href="/dashboard"><i class="fas fa-house"></i> Inicio</a>
+        <a href="/representantes"><i class="fas fa-person-dress"></i><i class="fas fa-person"></i> Representantes y Alumnos</a>
+        <a href="/pagos"><i class="fas fa-circle-dollar-to-slot"></i> Pagos y Facturación</a>
+        <a href="/reportes"><i class="fas fa-file-lines"></i> Reportes</a>
+        <a href="#" onclick="logout()"><i class="fas fa-power-off"></i> Cerrar Sesión</a>
+    </nav>
+
+    <main class="main-content">
+        <div class="gestion-container">
+             <div class="gestion-column gestion-buttons-vertical">
+                 <h1 id="title">MENÚ DE AJUSTES DEL SISTEMA</h1>
+                <button class="btn" id="btn-empresa">
+                    <h3><i class="fas fa-tachograph-digital"></i> Empresa</h3>
+                    <p>Configura los datos de la Empresa o Institución</p>
+                </button>
+                <button class="btn" id="btn-moneda-precio">
+                    <h3><i class="fas fa-money-bill"></i> Moneda y Precio</h3>
+                    <p>Configura la moneda y precios del Sistema</p>
+                </button>
+                <button class="btn" id="btn-modalidades">
+                    <h3><i class="fas fa-toggle-on"></i> Modalidades</h3>
+                    <p>Configura las modalidades de estudio y sus Cursos</p>
+                </button>
+                <button class="btn" id="btn-periodo">
+                    <h3><i class="fas fa-calendar-days"></i> Período</h3>
+                    <p>Configura el inicio y cierre del Período o Año Escolar</p>
+                </button>
+            </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="modal-moneda-precio" class="modal">
+        <div class="modal-content">
+            <span id="close-moneda-precio" class="close">&times;</span>
+            <h2 id="modal-title-moneda-precio">Configuración de Moneda y Precios</h2>
+            <div id="body-moneda-precio" class="modal-body">
+                </div>
+            <div class="modal-footer">
+                <button class="btn btn-blue" id="guardar-moneda-precio">Guardar</button>
+                <button class="btn btn-red" id="cerrar-moneda-precio-btn">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-modalidades" class="modal">
+        <div class="modal-content modal-large">
+            <span id="close-modalidades" class="close">&times;</span>
+            <h2 id="modal-title-modalidades">Configuración de Modalidades de Estudio</h2>
+            <div id="body-modalidades" class="modal-body">
+                </div>
+             <div class="modal-footer">
+                <button class="btn btn-blue" id="guardar-modalidades">Guardar</button>
+                <button class="btn btn-red" id="cerrar-modalidades-btn">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/src/menu.js"></script>
+    <script src="/src/authSesion.js"></script>
+    <script src="/src/configuracion.js"></script>
+</body>
+</html>
